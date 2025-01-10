@@ -1,9 +1,18 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background: #f5e8dd;
+  background: linear-gradient(to right, #f5e8dd, #ffd1dc);
 }
 
 .home-main {
@@ -16,20 +25,42 @@
   font-weight: bold;
   color: #333;
   margin-bottom: 20px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Gowun Dodum", serif;
+  animation: fadeIn 1s ease-out;
 }
 
 .home-description {
+  margin-top: 40px;
   font-size: 1.2rem;
   line-height: 2;
   color: #555;
+  font-family: "Gowun Dodum", serif;
+}
+
+.mood-icons {
+  margin: 20px 0;
+}
+
+.mood-icons span {
+  font-size: 2rem;
+  cursor: pointer;
+  margin: 0 10px;
+  opacity: 0;
+  animation: fadeIn 3s ease-out forwards;
+  transition: transform 0.2s ease-in-out;
+}
+
+.mood-icons span:hover {
+  transform: scale(1.2);
 }
 
 .start-button {
-  background-color: #eed3d9;
+  background-color: #f0b6c2;
   color: white;
   padding: 10px 20px;
+  margin-top: 20px;
   font-size: 1rem;
+  font-family: "Gowun Dodum", serif;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -37,5 +68,5 @@
 }
 
 .start-button:hover {
-  background-color: #e0c7cc;
+  background-color: #ef97a8;
 }
