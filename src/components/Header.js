@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/header.css";
+import logo from "../assets/logo.png";
 
 const Header = () => {
   return (
     <header className="header">
-      <h2 className="header-title">Today Mood</h2>
+       <Link to="/" className="header-logo">
+        <img src={logo} alt="Today Mood Logo" className="logo-image" />
+      </Link>
       <nav className="header-nav">
         <Link to="/" className="header-link">
           로그인
