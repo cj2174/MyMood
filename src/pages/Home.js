@@ -15,34 +15,10 @@ const Home = () => {
           Today Mood로 하루를 담아보세요.
         </p>
         <div className="mood-icons">
-          <span
-            onClick={() => {
-              window.location.href = "/";
-            }}
-          >
-            😊
-          </span>
-          <span
-            onClick={() => {
-              window.location.href = "/";
-            }}
-          >
-            😢
-          </span>
-          <span
-            onClick={() => {
-              window.location.href = "/";
-            }}
-          >
-            😡
-          </span>
-          <span
-            onClick={() => {
-              window.location.href = "/";
-            }}
-          >
-            😌
-          </span>
+          <span>😊</span>
+          <span>😢</span>
+          <span>😡</span>
+          <span>😌</span>
         </div>
         <button
           className="start-button"

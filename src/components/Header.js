@@ -6,11 +6,11 @@ import logo from "../assets/logo.png";
 const Header = () => {
   return (
     <header className="header">
-       <Link to="/" className="header-logo">
+      <Link to="/" className="header-logo">
         <img src={logo} alt="Today Mood Logo" className="logo-image" />
       </Link>
       <nav className="header-nav">
-        <Link to="/" className="header-link">
+        <Link to="/login" className="header-link">
           로그인
         </Link>
         <Link to="/" className="header-link">

@@ -1,9 +1,11 @@
 @keyframes fadeIn {
   0% {
     opacity: 0;
+    transform: translateY(20px);
   }
   100% {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -12,7 +14,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(to right, #f5e8dd, #ffd1dc);
+  background: linear-gradient(to right, #f5d4c1, #ecd5f7);
 }
 
 .home-main {
@@ -26,7 +28,8 @@
   color: #333;
   margin-bottom: 20px;
   font-family: "Gowun Dodum", serif;
-  animation: fadeIn 1s ease-out;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
 .home-description {
@@ -35,6 +38,9 @@
   line-height: 2;
   color: #555;
   font-family: "Gowun Dodum", serif;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 1.5s;
 }
 
 .mood-icons {
@@ -46,8 +52,24 @@
   cursor: pointer;
   margin: 0 10px;
   opacity: 0;
-  animation: fadeIn 3s ease-out forwards;
+  animation: fadeIn 1s ease-out forwards;
   transition: transform 0.2s ease-in-out;
+}
+
+.mood-icons span:nth-child(1) {
+  animation-delay: 2.5s; /* 첫 번째 아이콘은 2.5초 후 나타남 */
+}
+
+.mood-icons span:nth-child(2) {
+  animation-delay: 3s; /* 두 번째 아이콘은 3초 후 나타남 */
+}
+
+.mood-icons span:nth-child(3) {
+  animation-delay: 3.5s; /* 세 번째 아이콘은 3.5초 후 나타남 */
+}
+
+.mood-icons span:nth-child(4) {
+  animation-delay: 4s; /* 네 번째 아이콘은 4초 후 나타남 */
 }
 
 .mood-icons span:hover {
@@ -64,6 +86,9 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 5s;
   transition: background-color 0.3s;
 }
 
