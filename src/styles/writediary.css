@@ -1,0 +1,89 @@
+.diary-write-container {
+  width: 100%;
+  min-height: 100vh; /* 화면 높이를 기준으로 설정 */
+  background: linear-gradient(to right, #f5d4c1, #ecd5f7);
+  padding: 20px; /* 내부 여백 추가 */
+  box-sizing: border-box; /* padding 포함 크기 계산 */
+}
+
+h2 {
+  text-align: center;
+  font-family: "Gowun Dodum", serif;
+  font-size: 2rem;
+  margin: 0 0 20px 0; /* 상단 마진 제거 */
+}
+
+.diary-form {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 0;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  font-family: "Gowun Dodum", serif;
+  margin-bottom: 15px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: "Gowun Dodum", serif;
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+button {
+  background-color: #f0b6c2;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: "Gowun Dodum", serif;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #ef97a8;
+}
+
+@media (max-width: 768px) {
+  .diary-write-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .diary-form {
+    padding: 0 10px;
+  }
+
+  input,
+  textarea {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
+}

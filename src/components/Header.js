@@ -13,7 +13,7 @@ const Header = () => {
         <Link to="/login" className="header-link">
           로그인
         </Link>
-        <Link to="/" className="header-link">
+        <Link to="/writediary" className="header-link">
           일기작성
         </Link>
       </nav>
