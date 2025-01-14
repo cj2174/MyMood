@@ -39,6 +39,10 @@ const Login = () => {
     ) {
       // 로그인 성공 시
       alert("로그인 성공!");
+
+      // 로그인 성공 시 사용자 정보를 로컬 스토리지에 저장
+      localStorage.setItem("user", JSON.stringify({ userId, userPw }));
+
       // 로그인 후 리디렉션
       navigate("/");
     } else {
