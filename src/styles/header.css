@@ -38,19 +38,19 @@
 
 @media (max-width: 480px) {
   .header {
-    padding: 10px 15px; /* 패딩 더 축소 */
+    padding: 10px 15px;
   }
 
   .logo-image {
-    height: 40px; /* 로고 더 축소 */
+    height: 50px;
   }
 
   .header-nav {
-    gap: 8px; /* 네비게이션 간격 줄이기 */
+    gap: 8px;
   }
 
   .header-link {
-    font-size: 0.9rem; /* 글씨 더 축소 */
+    font-size: 0.9rem;
     padding: 2px 6px;
   }
 }

@@ -25,7 +25,7 @@ const Login = () => {
           </button>
         </form>
         <p className="login-signup">
-          계정이 없으신가요? <a href="/"> 회원가입</a>
+          계정이 없으신가요? <a href="/signup"> 회원가입</a>
         </p>
       </main>
       <Footer />

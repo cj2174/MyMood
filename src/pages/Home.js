@@ -10,7 +10,7 @@ const Home = () => {
       <main className="home-main">
         <h1 className="home-title">Today Mood</h1>
         <p className="home-description">
-          기분에 맞는 이모티콘으로 오늘을 기록해보기.
+          오늘 기분에 맞는 이모티콘으로,
           <br />
           Today Mood로 하루를 담아보세요.
         </p>

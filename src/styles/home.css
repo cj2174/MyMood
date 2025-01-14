@@ -18,8 +18,12 @@
 }
 
 .home-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
   text-align: center;
-  margin: 50px 0;
 }
 
 .home-title {
@@ -56,19 +60,19 @@
 }
 
 .mood-icons span:nth-child(1) {
-  animation-delay: 2.5s; /* 첫 번째 아이콘은 2.5초 후 나타남 */
+  animation-delay: 2.5s;
 }
 
 .mood-icons span:nth-child(2) {
-  animation-delay: 3s; /* 두 번째 아이콘은 3초 후 나타남 */
+  animation-delay: 3s;
 }
 
 .mood-icons span:nth-child(3) {
-  animation-delay: 3.5s; /* 세 번째 아이콘은 3.5초 후 나타남 */
+  animation-delay: 3.5s;
 }
 
 .mood-icons span:nth-child(4) {
-  animation-delay: 4s; /* 네 번째 아이콘은 4초 후 나타남 */
+  animation-delay: 4s;
 }
 
 .mood-icons span:hover {
