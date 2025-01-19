@@ -37,18 +37,27 @@ const Login = () => {
     }
 
     // 로컬 스토리지에서 저장된 사용자 정보 가져오기
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
 
     // 로그인 정보 확인
-    if (
-      storedUser &&
-      storedUser.userId === userId &&
-      storedUser.userPw === userPw
-    ) {
+    const user = storedUsers.find(
+      (storedUser) => storedUser.userId === userId && storedUser.userPw === userPw
+    );
+
+    if (user) {
       alert("로그인 성공!");
 
-      // 로그인 성공 후 리디렉션
-      navigate("/");
+      // 로그인 성공 후 사용자 정보 저장
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          userId: userId, // 로그인한 아이디
+          userPw: userPw,  // 비밀번호
+        })
+      );
+
+      // 로그인 후 메인 페이지로 이동
+      navigate("/"); // 메인 페이지로 이동
     } else {
       alert("아이디 또는 비밀번호가 잘못되었습니다.");
     }
@@ -67,11 +76,17 @@ const Login = () => {
             console.log("사용자 정보:", res);
             alert(`${res.kakao_account.profile.nickname}님, 환영합니다!`);
 
-            // 사용자 정보를 로컬 스토리지에 저장
-            localStorage.setItem("user", JSON.stringify(res.kakao_account));
+            // 카카오 로그인 정보를 로컬 스토리지에 저장
+            localStorage.setItem(
+              "user",
+              JSON.stringify({
+                userId: res.id, // 카카오 아이디를 저장
+                userPw: "kakao", // 비밀번호는 카카오 로그인으로 설정
+              })
+            );
 
             // 홈 화면으로 이동
-            navigate("/");
+            navigate("/"); // 메인 페이지로 이동
           },
           fail: (error) => {
             console.error("사용자 정보 요청 실패:", error);
@@ -116,7 +131,7 @@ const Login = () => {
         </div>
 
         <p className="login-signup">
-          계정이 없으신가요? <a href="/signup"> 회원가입</a>
+          계정이 없으신가요? <a href="/signup">회원가입</a>
         </p>
       </main>
       <Footer />

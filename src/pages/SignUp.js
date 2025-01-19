@@ -44,14 +44,17 @@ const Signup = () => {
       alert("비밀번호는 4자리 이상이어야 합니다.");
       return;
     }
+
     console.log("회원가입 성공", { userId, userPw });
 
-    // 로컬 스토리지에 회원 정보 저장
-    localStorage.setItem("user", JSON.stringify({ userId, userPw }));
+    // 로컬 스토리지에 회원 정보 저장 (로그인 상태는 변경하지 않음)
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    storedUsers.push({ userId, userPw });
+    localStorage.setItem("users", JSON.stringify(storedUsers));
 
-    // 회원가입 성공 후 로그인 화면으로 리디렉션
+    // 회원가입 완료 메시지 후 로그인 페이지로 리디렉션
     alert("회원가입 완료");
-    navigate("/login");
+    navigate("/login"); // 로그인 페이지로 이동
   };
 
   return (

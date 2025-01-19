@@ -25,15 +25,26 @@ const WriteDiary = () => {
         emoji: selectedEmoji,
       };
 
-      // 기존 로컬 스토리지 데이터 불러오기
-      const storedDiaries = JSON.parse(localStorage.getItem("diaries")) || [];
-      // 새로운 일기 추가
-      storedDiaries.push(diaryEntry);
-      // 로컬 스토리지에 저장
-      localStorage.setItem("diaries", JSON.stringify(storedDiaries));
+      const user = JSON.parse(localStorage.getItem("user")); // 로그인된 사용자 정보 가져오기
 
-      alert("일기가 저장되었습니다.");
-      navigate("/diarylist");
+      if (user) {
+        // 기존 로컬 스토리지 데이터 불러오기
+        const storedDiaries =
+          JSON.parse(localStorage.getItem(`diaries_${user.userId}`)) || [];
+        // 새로운 일기 추가
+        storedDiaries.push(diaryEntry);
+        // 로컬 스토리지에 저장
+        localStorage.setItem(
+          `diaries_${user.userId}`,
+          JSON.stringify(storedDiaries)
+        );
+
+        alert("일기가 저장되었습니다.");
+        navigate("/diarylist");
+      } else {
+        alert("로그인 후에 일기를 작성할 수 있습니다.");
+        navigate("/login");
+      }
     } else {
       alert("제목, 내용, 이모티콘을 모두 입력해주세요.");
     }

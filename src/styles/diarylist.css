@@ -1,9 +1,10 @@
 .diary-list-container {
-  width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(to right, #f5d4c1, #ecd5f7);
   padding: 20px;
+  background: linear-gradient(to right, #f5d4c1, #ecd5f7);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .diary-header {
@@ -13,114 +14,91 @@
   margin-bottom: 20px;
 }
 
-.add-diary-btn {
-  background-color: #f28ab2;
+.diary-header button {
+  padding: 8px 16px;
+  background-color: #4caf50;
   color: white;
   border: none;
-  border-radius: 8px;
-  padding: 10px 15px;
-  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
+  border-radius: 4px;
 }
 
-.add-diary-btn:hover {
-  background-color: #d86f97;
+.diary-header button:hover {
+  background-color: #45a049;
 }
 
 .diary-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
 }
 
 .diary-card {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  font-family: "Gowun Dodum", serif;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-height: 350px; 
+  overflow: hidden;
 }
 
 .diary-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.diary-card-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.diary-title {
-  font-size: 1.2rem;
+.diary-card h3 {
+  font-size: 18px;
   font-weight: bold;
-  color: #333;
-  margin: 10px 0;
+  margin-bottom: 12px;
+}
+
+.diary-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 12px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.diary-content {
-  font-size: 1rem;
-  color: #555;
-  flex-grow: 1;
-  margin-bottom: 15px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* 3줄로 제한 */
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: auto;
-}
-
-.view-detail-btn,
-.delete-btn {
-  padding: 8px 12px;
-  font-size: 0.9rem;
+.diary-card button {
+  padding: 8px 16px;
+  background-color: #f0b6c2; 
+  color: white;
   border: none;
-  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 100px;
+  font-size: 14px;
+  border-radius: 4px;
+  margin-right: 8px;
 }
 
-.view-detail-btn {
-  background-color: #f28ab2;
-  color: white;
+.diary-card button:hover {
+  background-color: #e09aaf; 
 }
 
-.view-detail-btn:hover {
-  background-color: #d86f97;
+.diary-card button:nth-child(2) {
+  background-color: #f07c8e; 
 }
 
-.delete-btn {
-  background-color: #f44336;
-  color: white;
+.diary-card button:nth-child(2):hover {
+  background-color: #e66a7b;
 }
 
-.delete-btn:hover {
-  background-color: #e53935;
+.diary-card button:first-child {
+  background-color: #f0b6c2;
 }
 
-.no-diary {
-  font-size: 1.2rem;
-  color: #555;
-  text-align: center;
-  margin-top: 50px;
-  line-height: 1.6;
-  padding: 50px 0;
+.diary-card button:first-child:hover {
+  background-color: #e09aaf;
+}
+
+.diary-card button:last-child {
+  background-color: #f07c8e; 
+}
+
+.diary-card button:last-child:hover {
+  background-color: #e66a7b;
 }
