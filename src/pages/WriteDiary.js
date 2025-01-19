@@ -18,6 +18,7 @@ const WriteDiary = () => {
   const handleSave = () => {
     if (title && content && selectedEmoji) {
       const diaryEntry = {
+        id: new Date().getTime(),
         title,
         content,
         date,

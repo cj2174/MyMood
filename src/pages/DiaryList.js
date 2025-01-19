@@ -14,6 +14,17 @@ const DiaryList = () => {
     setDiaryEntries(storedDiaries);
   }, []);
 
+  // 일기 삭제 함수
+  const handleDelete = (id) => {
+    const confirmDelete = window.confirm("정말로 이 일기를 삭제하시겠습니까?");
+    if (confirmDelete) {
+      // 삭제된 일기를 제외한 나머지 일기 항목들만 로컬 스토리지에 저장
+      const updatedDiaries = diaryEntries.filter((entry) => entry.id !== id);
+      localStorage.setItem("diaries", JSON.stringify(updatedDiaries));
+      setDiaryEntries(updatedDiaries); // 상태 업데이트하여 UI에 반영
+    }
+  };
+
   return (
     <div className="diary-list-container">
       <Header />
@@ -27,11 +38,14 @@ const DiaryList = () => {
         </button>
       </div>
       {diaryEntries.length === 0 ? (
-        <p className="no-diary">저장된 일기가 없습니다. 일기를 작성해보세요!</p>
+        <p className="no-diary">
+          저장된 일기가 없습니다. <br />
+          일기를 작성해보세요!
+        </p>
       ) : (
         <div className="diary-grid">
-          {diaryEntries.map((entry, index) => (
-            <div key={index} className="diary-card">
+          {diaryEntries.map((entry) => (
+            <div key={entry.id} className="diary-card">
               <div className="diary-card-header">
                 <span className="diary-date">{entry.date}</span>
                 <span className="diary-emoji">{entry.emoji}</span>
@@ -42,12 +56,20 @@ const DiaryList = () => {
                   ? entry.content.slice(0, 50) + "..."
                   : entry.content}
               </p>
-              <button
-                className="view-detail-btn"
-                onClick={() => navigate(`/diarydetail/${entry.id}`)}
-              >
-                자세히 보기
-              </button>
+              <div className="button-container">
+                <button
+                  className="view-detail-btn"
+                  onClick={() => navigate(`/diarydetail/${entry.id}`)} // id로 상세 페이지 이동
+                >
+                  자세히 보기
+                </button>
+                <button
+                  className="delete-btn"
+                  onClick={() => handleDelete(entry.id)} // 삭제 버튼 클릭 시 handleDelete 실행
+                >
+                  삭제
+                </button>
+              </div>
             </div>
           ))}
         </div>

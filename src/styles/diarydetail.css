@@ -1,43 +1,24 @@
 .diary-detail-container {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
-  background: linear-gradient(to right, #f5d4c1, #ecd5f7);
   padding: 20px;
+  background: linear-gradient(to right, #f5d4c1, #ecd5f7);
   box-sizing: border-box;
 }
 
 .diary-detail {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
+  background-color: #fff;
   border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.diary-header {
+  padding: 30px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.diary-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.diary-content {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.5;
-}
-
-.diary-emoji {
-  font-size: 1.5rem;
-  margin-left: 10px;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
 }
 
 .back-btn {
@@ -45,13 +26,91 @@
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 10px 15px;
-  font-size: 1rem;
+  padding: 12px 20px;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-bottom: 20px;
+  align-self: flex-start;
+  z-index: 1;
 }
 
 .back-btn:hover {
   background-color: #d86f97;
+}
+
+.diary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.diary-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 2px solid #f28ab2;
+}
+
+.diary-date {
+  font-size: 1.2rem;
+  color: #777;
+}
+
+.diary-emoji {
+  font-size: 2rem;
+  margin-left: 15px;
+  color: #f28ab2;
+}
+
+.diary-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.diary-content {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.8;
+  white-space: pre-wrap; /* 텍스트가 자연스럽게 줄바꿈 되게 */
+  word-wrap: break-word;
+}
+
+.diary-detail-footer {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.diary-detail-footer p {
+  font-size: 1.1rem;
+  color: #777;
+}
+
+@media (max-width: 768px) {
+  .diary-detail-container {
+    padding: 20px;
+  }
+
+  .diary-detail {
+    padding: 20px;
+  }
+
+  .diary-title {
+    font-size: 1.6rem;
+  }
+
+  .diary-content {
+    font-size: 1rem;
+  }
+
+  .back-btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
 }
