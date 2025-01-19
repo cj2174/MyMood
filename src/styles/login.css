@@ -84,3 +84,19 @@
 .login-signup a:hover {
   text-decoration: underline;
 }
+
+.kakao-login-button {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #ffec1e;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.kakao-login-button:hover {
+  background-color: #f7d600;
+}
