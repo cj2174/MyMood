@@ -18,17 +18,15 @@ const Login = () => {
     }
   }, []);
 
-  // 일반 로그인 - 아이디 입력 핸들러
+  // 일반 로그인
   const handleUserIdChange = (e) => {
     setUserId(e.target.value);
   };
 
-  // 일반 로그인 - 비밀번호 입력 핸들러
   const handleUserPwChange = (e) => {
     setUserPw(e.target.value);
   };
 
-  // 일반 로그인 제출 핸들러
   const handleSubmit = (e) => {
     e.preventDefault();
 

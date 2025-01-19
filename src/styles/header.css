@@ -30,6 +30,7 @@
   text-decoration: none;
   font-family: "Gowun Dodum", serif;
   padding: 5px 10px;
+  cursor: pointer;
 }
 
 .header-link:hover {
@@ -51,6 +52,6 @@
 
   .header-link {
     font-size: 0.9rem;
-    padding: 2px 6px;
+    padding: 2px 5px;
   }
 }

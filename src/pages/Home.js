@@ -8,14 +8,12 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleMoodClick = () => {
-    // 로그인 상태 확인 (예: 로컬 스토리지에 사용자 정보 저장 여부 확인)
+    // 로그인 상태 확인
     const isLoggedIn = localStorage.getItem("user");
 
     if (isLoggedIn) {
-      // 로그인 상태라면 기분 기록 화면으로 이동
-      navigate("/record-mood");
+      navigate("/writediary");
     } else {
-      // 로그인 상태가 아니라면 로그인 화면으로 이동
       alert("로그인이 필요합니다.");
       navigate("/login");
     }

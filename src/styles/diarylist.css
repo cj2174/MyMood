@@ -1,0 +1,103 @@
+.diary-list-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to right, #f5d4c1, #ecd5f7);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.diary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-diary-btn {
+  background-color: #f28ab2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-diary-btn:hover {
+  background-color: #d86f97;
+}
+
+.diary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.diary-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: "Gowun Dodum", serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.diary-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.diary-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.diary-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.diary-content {
+  font-size: 1rem;
+  color: #555;
+  flex-grow: 1;
+  margin-bottom: 15px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 3줄로 제한 */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.view-detail-btn {
+  background-color: #f28ab2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: auto;
+}
+
+.view-detail-btn:hover {
+  background-color: #d86f97;
+}
+
+.no-diary {
+  font-size: 1.2rem;
+  color: #555;
+  text-align: center;
+  margin-top: 50px;
+}
