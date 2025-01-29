@@ -16,7 +16,7 @@
 
 .diary-header button {
   padding: 8px 16px;
-  background-color: #4caf50;
+  background-color: #e7b5fe;
   color: white;
   border: none;
   cursor: pointer;
@@ -25,7 +25,7 @@
 }
 
 .diary-header button:hover {
-  background-color: #45a049;
+  background-color: #d9aaef;
 }
 
 .diary-grid {
@@ -40,8 +40,9 @@
   border-radius: 8px;
   background-color: #f9f9f9;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-height: 350px; 
+  max-height: 350px;
   overflow: hidden;
+  font-family: "Gowun Dodum", serif;
 }
 
 .diary-card:hover {
@@ -55,6 +56,10 @@
   margin-bottom: 12px;
 }
 
+.diary-card .diary-date {
+  color: #808080;
+}
+
 .diary-card p {
   font-size: 14px;
   color: #555;
@@ -66,7 +71,7 @@
 
 .diary-card button {
   padding: 8px 16px;
-  background-color: #f0b6c2; 
+  background-color: #f0b6c2;
   color: white;
   border: none;
   cursor: pointer;
@@ -76,11 +81,11 @@
 }
 
 .diary-card button:hover {
-  background-color: #e09aaf; 
+  background-color: #e09aaf;
 }
 
 .diary-card button:nth-child(2) {
-  background-color: #f07c8e; 
+  background-color: #f07c8e;
 }
 
 .diary-card button:nth-child(2):hover {
@@ -96,7 +101,7 @@
 }
 
 .diary-card button:last-child {
-  background-color: #f07c8e; 
+  background-color: #f07c8e;
 }
 
 .diary-card button:last-child:hover {

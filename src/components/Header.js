@@ -7,22 +7,28 @@ const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
 
-  // 로그인 상태를 확인하고 설정하는 함수
   const checkLoginStatus = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     setIsLogin(!!user); // user가 있으면 로그인 상태로 처리
   };
 
-  // 컴포넌트가 마운트될 때와 로그인 상태가 변경될 때마다 실행
   useEffect(() => {
     checkLoginStatus();
-  }, []); // 처음 렌더링될 때 실행 (최초 마운트 시 로그인 상태 체크)
+  }, []);
 
   // 로그아웃 처리
   const handleLogout = () => {
     localStorage.removeItem("user"); // 로컬 스토리지에서 사용자 정보 삭제
     checkLoginStatus(); // 로그인 상태 업데이트
-    navigate("/"); // 메인 페이지로 이동
+    navigate("/");
+  };
+
+  const handleWriteDiary = () => {
+    if (!isLogin) {
+      navigate("/login"); // 로그인되지 않으면 로그인 페이지로 이동
+    } else {
+      navigate("/writediary"); // 로그인되었으면 일기 작성 페이지로 이동
+    }
   };
 
   return (
@@ -36,9 +42,9 @@ const Header = () => {
             <Link to="/diarylist" className="header-link">
               내 일기장
             </Link>
-            <Link to="/writediary" className="header-link">
-              일기작성
-            </Link>
+            <span onClick={handleWriteDiary} className="header-link">
+              일기 작성
+            </span>
             <span onClick={handleLogout} className="header-link logout">
               로그아웃
             </span>
@@ -51,9 +57,9 @@ const Header = () => {
             <Link to="/signup" className="header-link">
               회원가입
             </Link>
-            <Link to="/writediary" className="header-link">
-              일기작성
-            </Link>
+            <span onClick={handleWriteDiary} className="header-link">
+              일기 작성
+            </span>
           </>
         )}
       </nav>

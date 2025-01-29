@@ -3,18 +3,25 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/login.css";
+import kakaoLogo from "../assets/kakao.png";
 
 const Login = () => {
   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [userPw, setUserPw] = useState("");
 
-  // Kakao SDK 초기화
+  // Kakao SDK
   useEffect(() => {
-    const KAKAO_KEY = "a3ea857aca653ce9fd85cdc954a0964d"; // 여기에 JavaScript 키를 넣으세요.
+    const KAKAO_KEY = "a3ea857aca653ce9fd85cdc954a0964d";
     if (!window.Kakao.isInitialized()) {
       window.Kakao.init(KAKAO_KEY);
       console.log("Kakao SDK Initialized:", window.Kakao.isInitialized());
+    }
+
+    // 로그인된 사용자 정보 확인
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      setUserId(storedUser.userId);
     }
   }, []);
 
@@ -41,7 +48,8 @@ const Login = () => {
 
     // 로그인 정보 확인
     const user = storedUsers.find(
-      (storedUser) => storedUser.userId === userId && storedUser.userPw === userPw
+      (storedUser) =>
+        storedUser.userId === userId && storedUser.userPw === userPw
     );
 
     if (user) {
@@ -51,13 +59,13 @@ const Login = () => {
       localStorage.setItem(
         "user",
         JSON.stringify({
-          userId: userId, // 로그인한 아이디
-          userPw: userPw,  // 비밀번호
+          userId: userId,
+          userPw: userPw,
         })
       );
 
       // 로그인 후 메인 페이지로 이동
-      navigate("/"); // 메인 페이지로 이동
+      navigate("/");
     } else {
       alert("아이디 또는 비밀번호가 잘못되었습니다.");
     }
@@ -80,13 +88,12 @@ const Login = () => {
             localStorage.setItem(
               "user",
               JSON.stringify({
-                userId: res.id, // 카카오 아이디를 저장
+                userId: res.id, // 카카오 아이디 저장
                 userPw: "kakao", // 비밀번호는 카카오 로그인으로 설정
               })
             );
 
-            // 홈 화면으로 이동
-            navigate("/"); // 메인 페이지로 이동
+            navigate("/");
           },
           fail: (error) => {
             console.error("사용자 정보 요청 실패:", error);
@@ -126,6 +133,11 @@ const Login = () => {
 
         <div className="kakao-login">
           <button onClick={handleKakaoLogin} className="kakao-login-button">
+            <img
+              src={kakaoLogo}
+              alt="kakao"
+              className="kakao-logo"
+            />
             카카오톡으로 로그인
           </button>
         </div>

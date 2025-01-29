@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // useNavigate 훅 import
+import { useNavigate } from "react-router-dom";
 import "../styles/diarylist.css";
 import Header from "../components/Header";
 
 const DiaryList = () => {
   const [diaryEntries, setDiaryEntries] = useState([]); // 일기 목록 상태
-  const [isLoading, setIsLoading] = useState(true); // 로딩 상태 관리
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   // 로그인된 사용자 정보 확인
-  const user = JSON.parse(localStorage.getItem("user")); // 로컬스토리지에서 저장된 user 정보 가져오기
+  const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     if (!user) {
@@ -19,15 +19,21 @@ const DiaryList = () => {
     }
 
     // 로컬 스토리지에서 해당 사용자 일기 목록 가져오기
-    const storedDiaries = JSON.parse(localStorage.getItem(`diaries_${user.userId}`)) || [];
+    const storedDiaries =
+      JSON.parse(localStorage.getItem(`diaries_${user.userId}`)) || [];
+
+    // 날짜순 정렬
+    const sortedDiaries = storedDiaries.sort(
+      (a, b) => new Date(a.date) - new Date(b.date)
+    );
 
     // 상태가 이미 로딩된 일기와 동일한 경우 업데이트하지 않도록 방지
-    if (JSON.stringify(diaryEntries) !== JSON.stringify(storedDiaries)) {
-      setDiaryEntries(storedDiaries); // 상태 업데이트하여 일기 목록 표시
+    if (JSON.stringify(diaryEntries) !== JSON.stringify(sortedDiaries)) {
+      setDiaryEntries(sortedDiaries);
     }
 
     setIsLoading(false); // 데이터 로딩 완료
-  }, [user, navigate, diaryEntries]); // 의존성 배열에 diaryEntries 추가
+  }, [user, navigate, diaryEntries]);
 
   // 일기 삭제 함수
   const handleDelete = (id) => {
@@ -38,7 +44,7 @@ const DiaryList = () => {
         `diaries_${user.userId}`,
         JSON.stringify(updatedDiaries)
       );
-      setDiaryEntries(updatedDiaries); // 상태 업데이트하여 UI에 반영
+      setDiaryEntries(updatedDiaries);
     }
   };
 
@@ -53,12 +59,16 @@ const DiaryList = () => {
       {isLoading ? (
         <p>로딩 중...</p>
       ) : diaryEntries.length === 0 ? (
-        <p>저장된 일기가 없습니다. <br />일기를 작성해보세요!</p>
+        <p>
+          저장된 일기가 없습니다. <br />
+          일기를 작성해보세요!
+        </p>
       ) : (
         <div className="diary-grid">
           {diaryEntries.map((entry) => (
             <div key={entry.id} className="diary-card">
               <h3>{entry.title}</h3>
+              <p className="diary-date">{entry.date}</p>
               <p>{entry.content.slice(0, 100)}</p>
               <button onClick={() => navigate(`/diarydetail/${entry.id}`)}>
                 자세히 보기

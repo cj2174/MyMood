@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // useNavigate 훅 import
+import { useNavigate } from "react-router-dom"; 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/writediary.css";
@@ -72,6 +72,7 @@ const WriteDiary = () => {
             type="date"
             id="date"
             value={date}
+            max={new Date().toISOString().slice(0, 10)}
             onChange={(e) => setDate(e.target.value)}
           />
         </div>

@@ -16,6 +16,7 @@
   min-height: 100vh;
   font-family: "Gowun Dodum", serif;
   background: linear-gradient(to right, #f5d4c1, #ecd5f7);
+  box-sizing: border-box;
 }
 
 .login-main {
@@ -86,17 +87,26 @@
 }
 
 .kakao-login-button {
-  width: 100%;
-  padding: 12px 15px;
-  font-size: 1rem;
-  font-weight: bold;
-  background-color: #ffec1e;
-  color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background-color: #fee500;
+  color: #3c1e1e; 
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
+
 .kakao-login-button:hover {
   background-color: #f7d600;
+}
+
+.kakao-logo {
+  width: 24px;
+  height: 24px;
 }
