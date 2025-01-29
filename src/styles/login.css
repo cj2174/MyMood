@@ -17,6 +17,7 @@
   font-family: "Gowun Dodum", serif;
   background: linear-gradient(to right, #f5d4c1, #ecd5f7);
   box-sizing: border-box;
+  padding: 20px;
 }
 
 .login-main {
