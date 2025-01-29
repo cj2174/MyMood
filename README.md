@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# 🎨 MyMood
+![image](https://github.com/user-attachments/assets/200edf21-3bf9-410a-849e-92a6ce6b6a51)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**MyMood**는 사용자가 **감정**을 기록하고, **일기**를 작성하는 웹 애플리케이션입니다.  
 
-## Available Scripts
 
-In the project directory, you can run:
+![image](https://github.com/user-attachments/assets/196af11c-1985-47dd-a62c-00fc6ca6842c)
 
-### `npm start`
+카카오 로그인 기능을 통해 손쉽게 로그인하고, 자신만의 **일기**를 기록할 수 있습니다.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![image](https://github.com/user-attachments/assets/57ea2b96-8f70-4ceb-82d2-31569b65863b)
 
-### `npm test`
+그날의 감정을 선택하고, 날짜별로 일기를 작성할 수 있는 기능을 제공합니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🌟 주요 기능
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **회원가입 및 로그인**: 사용자 계정 생성 및 로그인 기능
+- **카카오 로그인**: 카카오톡 계정으로 간편 로그인
+- **일기 작성**: 감정을 기록하면서 자신만의 일기를 작성
+- **일기 리스트**: 작성한 일기를 날짜별로 정리하여 확인
+- **일기 상세 보기**: 선택한 일기 상세 내용 보기
+- **반응형 디자인**: 다양한 화면 크기에 맞게 자동 조정되는 UI
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 💻 사용 기술
 
-### `npm run eject`
+- **React**: UI 구현
+- **React Router**: 페이지 간 네비게이션
+- **Kakao SDK**: 카카오 로그인 기능
+- **CSS**: 스타일링
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🚀 배포주소
+- **https://cj2174.github.io/MyMood/**
