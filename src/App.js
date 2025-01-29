@@ -9,7 +9,7 @@ import DiaryDetail from "./pages/DiaryDetail";
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/MyMood">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
