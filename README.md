@@ -1,4 +1,4 @@
-# 🎨 MyMood
+# 🎨 TodayMood
 ![image](https://github.com/user-attachments/assets/200edf21-3bf9-410a-849e-92a6ce6b6a51)
 
 **MyMood**는 사용자가 **감정**을 기록하고, **일기**를 작성하는 웹 애플리케이션입니다.  
