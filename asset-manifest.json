@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/TodayMood/static/css/main.2209feed.css",
-    "main.js": "/TodayMood/static/js/main.1ce16d97.js",
+    "main.js": "/TodayMood/static/js/main.d88794ee.js",
     "static/js/488.def07f53.chunk.js": "/TodayMood/static/js/488.def07f53.chunk.js",
     "static/media/kakao.png": "/TodayMood/static/media/kakao.128af68784a7cafd1da8.png",
     "static/media/logo.png": "/TodayMood/static/media/logo.64c7c40e17a998b81059.png",
     "index.html": "/TodayMood/index.html",
     "main.2209feed.css.map": "/TodayMood/static/css/main.2209feed.css.map",
-    "main.1ce16d97.js.map": "/TodayMood/static/js/main.1ce16d97.js.map",
+    "main.d88794ee.js.map": "/TodayMood/static/js/main.d88794ee.js.map",
     "488.def07f53.chunk.js.map": "/TodayMood/static/js/488.def07f53.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2209feed.css",
-    "static/js/main.1ce16d97.js"
+    "static/js/main.d88794ee.js"
   ]
 }
