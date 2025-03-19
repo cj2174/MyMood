@@ -22,7 +22,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "server": "json-server --watch db/db.json --port 3001",
-    "dev": "concurrently \"npm run server\" \"npm start\"" 
+    "dev": "concurrently \"npm run server\" \"npm start\""
   },
   "eslintConfig": {
     "extends": [
