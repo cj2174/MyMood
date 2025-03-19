@@ -12,32 +12,45 @@ const DiaryDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user")); // 현재 로그인된 사용자 정보 가져오기
+    const user = JSON.parse(localStorage.getItem("user")); // 현재 로그인된 사용자 정보
     if (!user) {
       alert("로그인이 필요합니다.");
       navigate("/login");
       return;
     }
 
-    // json-server에서 해당 사용자의 일기 데이터 가져오기
     const fetchDiary = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:3001/diaries?userId=${user.userId}&id=${id}`
-        );
-        const diary = response.data[0]; // 일기 데이터는 배열로 반환되므로 첫 번째 항목을 선택
-
+      if (process.env.NODE_ENV === "production") {
+        // Production 환경: 모의 데이터(localStorage) 사용
+        const storedDiaries =
+          JSON.parse(localStorage.getItem(`diaries_${user.userId}`)) || [];
+        const diary = storedDiaries.find((entry) => entry.id === Number(id));
         if (diary) {
           setDiaryEntry(diary);
         } else {
           alert("해당 일기를 찾을 수 없습니다.");
           navigate("/diarylist");
         }
-      } catch (error) {
-        console.error("일기 상세보기 오류:", error);
-        alert("일기 정보를 불러오는 중 오류가 발생했습니다.");
-      } finally {
-        setLoading(false); // 로딩 완료
+        setLoading(false);
+      } else {
+        // Development 환경: json-server에서 API 호출
+        try {
+          const response = await axios.get(
+            `http://localhost:3001/diaries?userId=${user.userId}&id=${id}`
+          );
+          const diary = response.data[0]; // 배열로 반환되므로 첫 번째 항목 선택
+          if (diary) {
+            setDiaryEntry(diary);
+          } else {
+            alert("해당 일기를 찾을 수 없습니다.");
+            navigate("/diarylist");
+          }
+        } catch (error) {
+          console.error("일기 상세보기 오류:", error);
+          alert("일기 정보를 불러오는 중 오류가 발생했습니다.");
+        } finally {
+          setLoading(false);
+        }
       }
     };
 
