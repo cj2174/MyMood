@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/MyMood/static/css/main.2209feed.css",
+    "main.js": "/MyMood/static/js/main.f5ae798b.js",
+    "static/js/488.def07f53.chunk.js": "/MyMood/static/js/488.def07f53.chunk.js",
+    "static/media/kakao.png": "/MyMood/static/media/kakao.128af68784a7cafd1da8.png",
+    "static/media/logo.png": "/MyMood/static/media/logo.64c7c40e17a998b81059.png",
+    "index.html": "/MyMood/index.html",
+    "main.2209feed.css.map": "/MyMood/static/css/main.2209feed.css.map",
+    "main.f5ae798b.js.map": "/MyMood/static/js/main.f5ae798b.js.map",
+    "488.def07f53.chunk.js.map": "/MyMood/static/js/488.def07f53.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2209feed.css",
+    "static/js/main.f5ae798b.js"
+  ]
+}
