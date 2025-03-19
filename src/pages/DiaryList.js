@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/diarylist.css";
 import Header from "../components/Header";
+import axios from "axios";
 
 const DiaryList = () => {
-  const [diaryEntries, setDiaryEntries] = useState([]); // 일기 목록 상태
+  const [diaryEntries, setDiaryEntries] = useState([]); 
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -13,38 +14,46 @@ const DiaryList = () => {
 
   useEffect(() => {
     if (!user) {
-      // 로그인된 사용자가 없으면 로그인 페이지로 리다이렉트
       navigate("/login");
       return;
     }
 
-    // 로컬 스토리지에서 해당 사용자 일기 목록 가져오기
-    const storedDiaries =
-      JSON.parse(localStorage.getItem(`diaries_${user.userId}`)) || [];
+    // json-server에서 해당 사용자의 일기 목록 가져오기
+    const fetchDiaries = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/diaries?userId=${user.userId}`
+        );
+        const diaries = response.data;
 
-    // 날짜순 정렬
-    const sortedDiaries = storedDiaries.sort(
-      (a, b) => new Date(a.date) - new Date(b.date)
-    );
+        // 날짜순으로 정렬
+        const sortedDiaries = diaries.sort(
+          (a, b) => new Date(a.date) - new Date(b.date)
+        );
 
-    // 상태가 이미 로딩된 일기와 동일한 경우 업데이트하지 않도록 방지
-    if (JSON.stringify(diaryEntries) !== JSON.stringify(sortedDiaries)) {
-      setDiaryEntries(sortedDiaries);
-    }
+        setDiaryEntries(sortedDiaries);
+      } catch (error) {
+        console.error("일기 목록 불러오기 오류:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-    setIsLoading(false); // 데이터 로딩 완료
-  }, [user, navigate, diaryEntries]);
+    fetchDiaries();
+  }, [user, navigate]);
 
   // 일기 삭제 함수
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     const confirmDelete = window.confirm("정말로 이 일기를 삭제하시겠습니까?");
     if (confirmDelete) {
-      const updatedDiaries = diaryEntries.filter((entry) => entry.id !== id);
-      localStorage.setItem(
-        `diaries_${user.userId}`,
-        JSON.stringify(updatedDiaries)
-      );
-      setDiaryEntries(updatedDiaries);
+      try {
+        await axios.delete(`http://localhost:3001/diaries/${id}`);
+        const updatedDiaries = diaryEntries.filter((entry) => entry.id !== id);
+        setDiaryEntries(updatedDiaries);
+      } catch (error) {
+        console.error("일기 삭제 오류:", error);
+        alert("일기 삭제 중 오류가 발생했습니다.");
+      }
     }
   };
 
@@ -73,7 +82,7 @@ const DiaryList = () => {
               <button onClick={() => navigate(`/diarydetail/${entry.id}`)}>
                 자세히 보기
               </button>
-              <button onClick={() => handleDelete(entry.id)}>🗑 삭제</button>
+              <button onClick={() => handleDelete(entry.id)}>삭제</button>
             </div>
           ))}
         </div>

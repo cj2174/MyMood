@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/diarydetail.css";
+import axios from "axios";
 
 const DiaryDetail = () => {
   const { id } = useParams();
@@ -18,17 +19,29 @@ const DiaryDetail = () => {
       return;
     }
 
-    const storedDiaries = JSON.parse(localStorage.getItem(`diaries_${user.userId}`)) || [];
-    const diary = storedDiaries.find((entry) => entry.id === Number(id)); // id를 숫자로 변환
+    // json-server에서 해당 사용자의 일기 데이터 가져오기
+    const fetchDiary = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/diaries?userId=${user.userId}&id=${id}`
+        );
+        const diary = response.data[0]; // 일기 데이터는 배열로 반환되므로 첫 번째 항목을 선택
 
-    if (diary) {
-      setDiaryEntry(diary);
-    } else {
-      alert("해당 일기를 찾을 수 없습니다.");
-      navigate("/diarylist");
-      return;
-    }
-    setLoading(false);
+        if (diary) {
+          setDiaryEntry(diary);
+        } else {
+          alert("해당 일기를 찾을 수 없습니다.");
+          navigate("/diarylist");
+        }
+      } catch (error) {
+        console.error("일기 상세보기 오류:", error);
+        alert("일기 정보를 불러오는 중 오류가 발생했습니다.");
+      } finally {
+        setLoading(false); // 로딩 완료
+      }
+    };
+
+    fetchDiary();
   }, [id, navigate]);
 
   if (loading) {

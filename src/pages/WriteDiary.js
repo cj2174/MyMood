@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/writediary.css";
+import axios from "axios";
 
 const WriteDiary = () => {
   const [title, setTitle] = useState("");
@@ -11,36 +12,38 @@ const WriteDiary = () => {
   const [selectedEmoji, setSelectedEmoji] = useState("");
   const navigate = useNavigate();
 
-  // 이모티콘 리스트
   const emojiList = ["😀", "😢", "😡", "😍", "🤔", "😴", "🥳", "🤯", "🙄"];
 
   // 일기 저장
-  const handleSave = () => {
+  const handleSave = async () => {
     if (title && content && selectedEmoji) {
       const diaryEntry = {
-        id: new Date().getTime(),
+        id: new Date().getTime(), // 일기 ID
         title,
         content,
         date,
         emoji: selectedEmoji,
       };
 
-      const user = JSON.parse(localStorage.getItem("user")); // 로그인된 사용자 정보 가져오기
+      const user = JSON.parse(localStorage.getItem("user"));
 
       if (user) {
-        // 기존 로컬 스토리지 데이터 불러오기
-        const storedDiaries =
-          JSON.parse(localStorage.getItem(`diaries_${user.userId}`)) || [];
-        // 새로운 일기 추가
-        storedDiaries.push(diaryEntry);
-        // 로컬 스토리지에 저장
-        localStorage.setItem(
-          `diaries_${user.userId}`,
-          JSON.stringify(storedDiaries)
-        );
+        try {
+          // 서버에 일기 저장 요청
+          await axios.post("http://localhost:3001/diaries", {
+            userId: user.userId, // 로그인된 사용자 userId와 연결
+            title,
+            content,
+            date,
+            emoji: selectedEmoji,
+          });
 
-        alert("일기가 저장되었습니다.");
-        navigate("/diarylist");
+          alert("일기가 저장되었습니다.");
+          navigate("/diarylist"); // 일기 목록 페이지로 이동
+        } catch (error) {
+          console.error("일기 저장 오류:", error);
+          alert("일기 저장 중 오류가 발생했습니다.");
+        }
       } else {
         alert("로그인 후에 일기를 작성할 수 있습니다.");
         navigate("/login");
